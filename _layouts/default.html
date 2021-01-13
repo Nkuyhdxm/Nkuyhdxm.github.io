@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+  {% include head.html %}
+
+  <body>
+    {% include header.html %}
+    <!--window.pageYOffset代表窗口左上角在垂直方向上被拉动的距离-->
+    <!--script>
+      var prevScrollpos = window.pageYOffset;
+      window.onscroll = function() {
+      var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+          document.getElementById("header-bar").style.top = "0";
+        } else {
+          document.getElementById("header-bar").style.top = "-50px";
+        }
+        prevScrollpos = currentScrollPos;
+      }
+      </script-->
+    
+    <script>
+        window.onscroll = function() {myFunction()};
+        
+        var navbar = document.getElementById("navbar");
+        var sticky = navbar.offsetTop;
+        
+        function myFunction() {
+            if (window.pageYOffset >= sticky) {
+            navbar.classList.add("sticky")
+            } else {
+            navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+    
+
+    <main class="page-content" aria-label="Content">
+      {% if page.lang %}
+      <div class="post" lang="{{page.lang}}">
+      {% else %}
+      <div class="post">
+      {% endif %}
+        <div class="wrapper">
+          {{ content }}
+        </div>
+      </div>
+    </main>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>

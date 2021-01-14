@@ -278,6 +278,7 @@
    max-width:         calc(#{$content-width} - (#{$spacing-unit} * 1));
    margin-right: auto;
    margin-left: auto;
+   padding-top: $spacing-unit;
    padding-right: $spacing-unit;
    padding-left: $spacing-unit;
    @extend %clearfix;
